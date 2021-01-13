@@ -22,8 +22,9 @@
 
 1. **PRODUCER**
 
-   - It is the `application which send messages or publish (write) events to kafka`.
+   - It is the `application which send messages or publish (write) events to kafka sercer/broker`.
    -
 
 2. **CONSUMER**:-
-   -
+   - It is the `application which reads message from kafka server/broker`
+   - consumers are those `that subscribe to (read and process) these events`.
