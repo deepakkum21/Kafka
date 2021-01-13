@@ -119,3 +119,29 @@ replication factor decides the no of copies of the topic will be created.
 
 2. ## Follower
    - The other nodes work as follower as they only communicate with leader for copying the data.
+
+## creating multi broker in single node
+
+1. Copy `config/server.properties` and rename with no of broker or server want to create as to run every server we need separate properties file for each broker/server.
+
+   - cp config/server.properties config/server-1.properties
+   - cp config/server.properties config/server-2.properties
+
+2. configure some of the properties in config/server.properties in each of the server.properties file.
+
+   - increment the `broker.id`
+   - increment the `listeners=PLAINTEXT://:` port no
+   - change the log dir `log.dirs=` value also so that each server have a separate log dir
+
+3. start all the kafka server using `bin/kafka-server-start.sh config/server.properties`
+
+4. create a topic with replication-factor 3 (any one cmd)
+   - `bin/kafka-topics.sh --zookeeper localhost:2181 --create --topic topic_name --partitions 2 --replication-factor 3`
+   - `bin/kafka-topics.sh --bootstrap-server localhost:9092 --create --topic topic_name --partitions 2 --replication-factor 3`
+   - use --describe option to see the details of the topic `bin/kafka-topics.sh --bootstrap-server localhost:9092 --describe --topic topic_name`
+   - the output of describe acn be like:-
+   ```
+   Topic: replication-factor-demo-topic1   PartitionCount: 2       ReplicationFactor: 3    Configs: segment.bytes=1073741824
+        Topic: replication-factor-demo-topic1   Partition: 0    Leader: 0       Replicas: 0,2,1 Isr: 0,2,1
+        Topic: replication-factor-demo-topic1   Partition: 1    Leader: 2       Replicas: 2,1,0 Isr: 2,1,0
+   ```
