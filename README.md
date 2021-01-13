@@ -71,3 +71,51 @@
 ```
     Topic   ----->       Partition       ----->        Offset
 ```
+
+## Steps to install KAFKA in ubuntu:-
+
+1. create a folder kafka. `curl --remote-name https://downloads.apache.org/kafka/2.7.0/kafka_2.13-2.7.0.tgz`
+2. unzip the file `tar -xzf kafka_2.13-2.7.0.tgz`
+3. cd into the unzipped folder.
+4. install java `sudo apt install openjdk-8-jdk`
+5. Start the ZooKeeper service **used for maintaining a coordination indistributed env** in future zookeeper would not be required
+   - `bin/zookeeper-server-start.sh config/zookeeper.properties`
+6. Start the Kafka broker service
+
+   - `bin/kafka-server-start.sh config/server.properties`
+
+7. Create a topic to store event/ message/ data:-
+
+```
+  bin/kafka-topics.sh --zookeeper localhost:2181 --create --topic first-topic --partitions 2 --replication-factor 1
+    (using zookeeper)
+  or
+
+  bin/kafka-topics.sh --bootstrap-server localhost:9092 --create --topic first-topic --partitions 2 --replication-factor 1
+  (without zookeeper- diectly connecting to kafka server)
+```
+
+8. to get the details of a topic
+
+   - `bin/kafka-topics.sh --bootstrap-server localhost:9092 --describe --topic topic_name`
+
+9. WRITE SOME EVENTS INTO THE TOPIC
+
+   - `bin/kafka-console-producer.sh --topic topic_name --bootstrap-server localhost:9092`
+
+10. READ THE EVENTS
+
+    - `bin/kafka-console-consumer.sh --topic topic-name --from-beginning --bootstrap-server localhost:9092`
+
+## fault tolerance - Replication factor
+
+replication factor decides the no of copies of the topic will be created.
+
+1. ## Leader
+
+   - one of the copy works as Leader who communicates with the producer and consumer.
+   - it is the leader responsibility when a producer wants to communicate, it receives the data, copy it to the disk and send a acknowledgemnet to the producer.
+   - for every partition we have a leader.
+
+2. ## Follower
+   - The other nodes work as follower as they only communicate with leader for copying the data.
