@@ -31,7 +31,13 @@
    - consumers are those `that subscribe to (read and process) these events`.
 
 3. **KAFKA SERVER / BROKER**
+
    - A Kafka broker is known as KafkaServer that` hosts topics`.
    - A Kafka broker `receives messages from producers and stores them on disk keyed by unique offset`.
    - A Kafka broker `allows consumers to fetch messages by topic, partition and offset`.
    - Kafka brokers can c`reate a Kafka cluster by sharing information between each other directly or indirectly using Zookeeper`.
+
+4. **Kafka Broker**
+   - A Kafka cluster consists of `one or more servers (Kafka brokers) running Kafka`.
+   - Producers are processes that push records into Kafka topics within the broker.
+   - A consumer pulls records off a Kafka topic.
