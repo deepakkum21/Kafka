@@ -44,4 +44,13 @@
    - A consumer pulls records off a Kafka topic.
 
 5. **Kafka Topic**
+
    - A Topic is a `unique category/feed name to which records` are stored and published.
+
+6. **Kafka topic partition**
+
+   - Topics can be` divided into partition to store in kafka server` as on topic can be huge in size.
+   - Its the `responsibility of our to decide the no of partition` as each partition sits in one computer.
+   - Kafka topics are divided into a number of partitions, which contain records in an unchangeable sequence. Each record in a partition is assigned and identified by its unique offset.
+
+7.
