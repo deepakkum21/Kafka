@@ -115,7 +115,7 @@ replication factor decides the no of copies of the topic will be created.
 
    - one of the copy works as Leader who communicates with the producer and consumer.
    - it is the leader responsibility when a producer wants to communicate, it receives the data, copy it to the disk and send a acknowledgemnet to the producer.
-   - for every partition we have a leader.
+   - `for every partition we have a leader`.
 
 2. ## Follower
    - The other nodes work as follower as they only communicate with leader for copying the data.
@@ -145,3 +145,4 @@ replication factor decides the no of copies of the topic will be created.
         Topic: replication-factor-demo-topic1   Partition: 0    Leader: 0       Replicas: 0,2,1 Isr: 0,2,1
         Topic: replication-factor-demo-topic1   Partition: 1    Leader: 2       Replicas: 2,1,0 Isr: 2,1,0
    ```
+   - `isr`:- it tell the in sync replicas
