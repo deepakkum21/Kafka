@@ -38,6 +38,10 @@
    - Kafka brokers can c`reate a Kafka cluster by sharing information between each other directly or indirectly using Zookeeper`.
 
 4. **Kafka Broker**
+
    - A Kafka cluster consists of `one or more servers (Kafka brokers) running Kafka`.
    - Producers are processes that push records into Kafka topics within the broker.
    - A consumer pulls records off a Kafka topic.
+
+5. **Kafka Topic**
+   - A Topic is a `unique category/feed name to which records` are stored and published.
