@@ -146,3 +146,48 @@ replication factor decides the no of copies of the topic will be created.
         Topic: replication-factor-demo-topic1   Partition: 1    Leader: 2       Replicas: 2,1,0 Isr: 2,1,0
    ```
    - `isr`:- it tell the in sync replicas
+
+## Broker Configs (https://kafka.apache.org/documentation/#brokerconfigs)
+
+1. `broker.id`
+   - The broker id for this server. If unset, a unique broker id will be generated.
+   - To avoid conflicts between zookeeper generated broker id's and user configured broker id's, generated broker ids start from reserved.broker.max.id + 1.
+2. `log.dirs`
+   - The directory in which the log data is kept (supplemental for log.dirs property)
+   - default value:- /tmp/kafka-logs
+3. `zookeeper.connect`
+   - Specifies the ZooKeeper connection string in the form hostname:port
+   - also specify multiple hosts in the form hostname1:port1,hostname2:port2,hostname3:port3
+4. `auto.create.topics.enable`
+   - Enable auto creation of topic on the serve
+   ```
+   Type:	boolean
+   Default:	true
+   ```
+5. `auto.leader.rebalance.enable`
+   - Enables auto leader balancing. A background thread checks the distribution of partition leaders at regular intervals, configurable by `leader.imbalance.check.interval.seconds`.
+   - If the leader imbalance exceeds `leader.imbalance.per.broker.percentage`, leader rebalance to the preferred leader for partitions is triggered.
+6. `delete.topic.enable`
+   - Enables delete topic.
+   - Delete topic through the admin tool will have no effect if this config is turned off.
+7. `leader.imbalance.check.interval.seconds`
+   - The frequency with which the partition rebalance check is triggered by the controller
+8. `leader.imbalance.per.broker.percentage`
+   - The ratio of leader imbalance allowed per broker. The controller would trigger a leader balance if it goes above this value per broker. The value is specified in percentage.
+9. `default.replication.factor`
+
+   - default replication factors for automatically created topics
+   - helpful when `auto.create.topics.enable` is true
+   - default value is 1.
+
+10. `num.parttions`
+    - no of partition to be created-
+    - helpful when `auto.create.topics.enable` is true
+    - default value is 1.
+11. `log.retention.ms`
+    - The number of milliseconds to keep a log file before deleting it (in milliseconds), If not set, the value in log.retention.minutes is used. If set to -1, no time limit is applied.
+    - the default max time to retain a message in kafka is 7 days.
+12. `log.retention.bytes`
+    - The maximum size of the log before deleting it.
+    - the `retention size is for partition`.
+    - default value -1
