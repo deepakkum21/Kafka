@@ -56,3 +56,9 @@
 7. **OFFSET**
    - it is `the sequenceId given to the messages as they arrive in the partition`.
    - consumers responsible for tracking the position in the log, known as the “offset”.
+
+## to locate a message one should have:-
+
+```
+    Topic   ----->       Partition       ----->        Offset
+```
