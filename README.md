@@ -53,4 +53,6 @@
    - Its the `responsibility of our to decide the no of partition` as each partition sits in one computer.
    - Kafka topics are divided into a number of partitions, which contain records in an unchangeable sequence. Each record in a partition is assigned and identified by its unique offset.
 
-7.
+7. **OFFSET**
+   - it is `the sequenceId given to the messages as they arrive in the partition`.
+   - consumers responsible for tracking the position in the log, known as the “offset”.
