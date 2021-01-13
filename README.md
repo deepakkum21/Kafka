@@ -26,5 +26,12 @@
    -
 
 2. **CONSUMER**:-
+
    - It is the `application which reads message from kafka server/broker`
    - consumers are those `that subscribe to (read and process) these events`.
+
+3. **KAFKA SERVER / BROKER**
+   - A Kafka broker is known as KafkaServer that` hosts topics`.
+   - A Kafka broker `receives messages from producers and stores them on disk keyed by unique offset`.
+   - A Kafka broker `allows consumers to fetch messages by topic, partition and offset`.
+   - Kafka brokers can c`reate a Kafka cluster by sharing information between each other directly or indirectly using Zookeeper`.
