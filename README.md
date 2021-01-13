@@ -54,8 +54,17 @@
    - Kafka topics are divided into a number of partitions, which contain records in an unchangeable sequence. Each record in a partition is assigned and identified by its unique offset.
 
 7. **OFFSET**
+
    - it is `the sequenceId given to the messages as they arrive in the partition`.
    - consumers responsible for tracking the position in the log, known as the “offset”.
+
+8. **Consumer Group**
+   - A `group of consumer acting as a single logical unit`.
+   - **maximum no consumer can be in a `group <= no of partition` in a kafka server** to avoid reading of same data broker doesnot allow more than one consumer to read from same partition.
+   - Here a consumer group is `created by adding the property “group.id” to a consumer`. Giving the same group id to another consumer means it will join the same group.
+   - Every time a `consumer is added or removed from a group the consumption is rebalanced between the group`. All consumers are stopped on every rebalance, so clients that time out or are restarted often will decrease the throughput. `Make the consumers stateless since the consumer might get different partitions assigned on a rebalance`.
+   - The number of partitions impacts the maximum parallelism of consumers as there cannot be more consumers than partitions.
+   - Records are never pushed out to consumers, `the consumer will ask for messages when the consumer is ready to handle the message`.
 
 ## to locate a message one should have:-
 
