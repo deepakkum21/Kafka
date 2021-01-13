@@ -21,5 +21,9 @@
 ## KAFKA CORE CONCEPTS
 
 1. **PRODUCER**
-   - It is the `application which send messages to kafka`.
+
+   - It is the `application which send messages or publish (write) events to kafka`.
+   -
+
+2. **CONSUMER**:-
    -
