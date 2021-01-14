@@ -191,3 +191,5 @@ replication factor decides the no of copies of the topic will be created.
     - The maximum size of the log before deleting it.
     - the `retention size is for partition`.
     - default value -1
+
+## Install SBT
